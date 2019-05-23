@@ -1,5 +1,39 @@
 package com.backend.dao;
 
-public class CommentsDaoImple {
+import java.util.List;
+
+import com.backend.model.Comments;
+
+public class CommentsDaoImple implements CommentsDao{
+
+	@Override
+	public long save(Comments comment) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Comments get(long comment_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Comments> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void update(long comment_id, Comments comment) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(long comment_id) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
