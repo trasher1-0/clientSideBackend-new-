@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # BOOK API - Spring MVC, MySQL, Hibernate Rest API Tutorial
 
 Build Restful CRUD API for a simple Book-Manage application using Spring MVC, Mysql and Hibernate.
@@ -61,3 +62,6 @@ You can test them using postman or any other rest client.
 You can find the tutorial for this application on my blog - 
 
 <http://bushansirgur.in/angular-2-and-spring-mvc-simple-crud-application/>
+=======
+# clientSideBackend-new-
+>>>>>>> 8b909ab3abf86fd2848d0f0da8ee77dd50ca32df
