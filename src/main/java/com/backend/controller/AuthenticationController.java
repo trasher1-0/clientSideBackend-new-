@@ -57,6 +57,18 @@ public class AuthenticationController {
 		return ResponseEntity.ok().body("Login fail !");
 		
 	}
+
+
+	public Long getCustomer_id() {
+		return customer_id;
+	}
+
+
+	public void setCustomer_id(Long customer_id) {
+		this.customer_id = customer_id;
+	}
+	
+	
 	
 
 }

@@ -16,8 +16,8 @@ public class CommentsDaoImple implements CommentsDao{
 	
 	@Override
 	public long save(Comments comment) {
-		// TODO Auto-generated method stub
-		return 0;
+		sessionFactory.getCurrentSession().save(comment);
+		return comment.getComment_id();
 	}
 
 	@Override
@@ -28,8 +28,8 @@ public class CommentsDaoImple implements CommentsDao{
 
 	@Override
 	public List<Comments> list() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Comments> allComments=sessionFactory.getCurrentSession().createQuery("from Comments").list();
+		return allComments;
 	}
 
 	@Override

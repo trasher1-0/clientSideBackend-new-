@@ -19,8 +19,7 @@ public class CommentsServiceImple implements CommentsService{
 	@Transactional
 	@Override
 	public long save(Comments comment) {
-		// TODO Auto-generated method stub
-		return 0;
+		return commentDao.save(comment);
 	}
 
 	@Override
@@ -31,8 +30,7 @@ public class CommentsServiceImple implements CommentsService{
 
 	@Override
 	public List<Comments> list() {
-		// TODO Auto-generated method stub
-		return null;
+		return commentDao.list();
 	}
 
 	@Transactional
