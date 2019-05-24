@@ -16,8 +16,8 @@ public class NotificationsDaoImple implements NotificationsDao{
 	
 	@Override
 	public long save(Notifications notification) {
-		// TODO Auto-generated method stub
-		return 0;
+		sessionFactory.getCurrentSession().save(notification);
+		return notification.getNotification_id();
 	}
 
 	@Override
@@ -28,8 +28,8 @@ public class NotificationsDaoImple implements NotificationsDao{
 
 	@Override
 	public List<Notifications> list() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Notifications> notifications=sessionFactory.getCurrentSession().createQuery("from Notifications").list();
+		return notifications;
 	}
 
 	@Override

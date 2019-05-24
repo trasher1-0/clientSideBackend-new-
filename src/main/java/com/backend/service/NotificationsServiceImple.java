@@ -19,8 +19,7 @@ public class NotificationsServiceImple implements NotificationsService{
 	@Transactional
 	@Override
 	public long save(Notifications notification) {
-		// TODO Auto-generated method stub
-		return 0;
+		return notificationDao.save(notification);
 	}
 
 	@Override
@@ -31,8 +30,7 @@ public class NotificationsServiceImple implements NotificationsService{
 
 	@Override
 	public List<Notifications> list() {
-		// TODO Auto-generated method stub
-		return null;
+		return notificationDao.list();
 	}
 
 	@Transactional
