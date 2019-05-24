@@ -10,15 +10,16 @@ public class Help {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long Help_id;
+	private Long id;
 	private Long customer_id;
 	private String help_type;
 	private String help;
+	
 	public Long getHelp_id() {
-		return Help_id;
+		return id;
 	}
 	public void setHelp_id(Long help_id) {
-		Help_id = help_id;
+		id = id;
 	}
 	public Long getCustomer_id() {
 		return customer_id;

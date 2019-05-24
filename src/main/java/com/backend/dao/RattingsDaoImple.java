@@ -2,10 +2,18 @@ package com.backend.dao;
 
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.backend.model.Rattings;
 
+@Repository
 public class RattingsDaoImple implements RattingsDao{
 
+	@Autowired
+   private SessionFactory sessionFactory;
+	
 	@Override
 	public long save(Rattings ratting) {
 		// TODO Auto-generated method stub

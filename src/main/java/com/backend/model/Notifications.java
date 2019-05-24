@@ -11,7 +11,7 @@ public class Notifications {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
-	private Long notification_id;
+	private Long id;
 	private Long customer_id;
 	private int notification_type;
 	private String notification;
@@ -19,10 +19,10 @@ public class Notifications {
 	private int is_read;
 	
 	public Long getNotification_id() {
-		return notification_id;
+		return id;
 	}
 	public void setNotification_id(Long notification_id) {
-		this.notification_id = notification_id;
+		this.id = id;
 	}
 	public Long getCustomer_id() {
 		return customer_id;

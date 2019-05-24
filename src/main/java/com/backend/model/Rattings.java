@@ -10,16 +10,16 @@ public class Rattings {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long ratting_id;
+	private Long id;
 	private Long customer_id;
 	private int trasher_type;
 	private int rated_value;
 	
 	public Long getRatting_id() {
-		return ratting_id;
+		return id;
 	}
 	public void setRatting_id(Long ratting_id) {
-		this.ratting_id = ratting_id;
+		this.id = id;
 	}
 	public Long getCustomer_id() {
 		return customer_id;

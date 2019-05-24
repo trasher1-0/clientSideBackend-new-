@@ -2,10 +2,18 @@ package com.backend.dao;
 
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.backend.model.Notifications;
 
+@Repository
 public class NotificationsDaoImple implements NotificationsDao{
 
+	@Autowired
+   private SessionFactory sessionFactory;
+	
 	@Override
 	public long save(Notifications notification) {
 		// TODO Auto-generated method stub

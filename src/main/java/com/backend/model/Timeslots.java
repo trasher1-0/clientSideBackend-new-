@@ -10,13 +10,14 @@ public class Timeslots {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long invoice_id;
+	private Long id;
 	private String time_slot;
+	
 	public Long getInvoice_id() {
-		return invoice_id;
+		return id;
 	}
 	public void setInvoice_id(Long invoice_id) {
-		this.invoice_id = invoice_id;
+		this.id = id;
 	}
 	public String getTime_slot() {
 		return time_slot;

@@ -10,7 +10,7 @@ public class Invoices {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long invoice_id;
+	private Long id;
 	private String invoice_type;
 	private Long customer_id;
 	private String customer_name;
@@ -19,10 +19,10 @@ public class Invoices {
 	private int quantity;
 	
 	public Long getInvoice_id() {
-		return invoice_id;
+		return id;
 	}
 	public void setInvoice_id(Long invoice_id) {
-		this.invoice_id = invoice_id;
+		this.id = id;
 	}
 	public String getInvoice_type() {
 		return invoice_type;

@@ -10,16 +10,16 @@ public class Comments {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long comment_id;
+	private Long id;
 	private Long customer_id;  
 	private int trasher_type;
 	private String comment ;
 	
 	public Long getComment_id() {
-		return comment_id;
+		return id;
 	}
 	public void setComment_id(Long comment_id) {
-		this.comment_id = comment_id;
+		this.id = id;
 	}
 	public Long getCustomer_id() {
 		return customer_id;

@@ -10,14 +10,14 @@ public class Feedbacks {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long feedback_id;
+	private Long id;
 	private Long customer_id;  
 	private String feedback ;
 	public Long getFeedback_id() {
-		return feedback_id;
+		return id;
 	}
 	public void setFeedback_id(Long feedback_id) {
-		this.feedback_id = feedback_id;
+		this.id = id;
 	}
 	public Long getCustomer_id() {
 		return customer_id;

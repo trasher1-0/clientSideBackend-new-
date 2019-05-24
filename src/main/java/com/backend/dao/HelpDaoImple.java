@@ -2,10 +2,18 @@ package com.backend.dao;
 
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.backend.model.Help;
 
+@Repository
 public class HelpDaoImple implements HelpDao {
 
+	@Autowired
+   private SessionFactory sessionFactory;
+	
 	@Override
 	public long save(Help help) {
 		// TODO Auto-generated method stub
