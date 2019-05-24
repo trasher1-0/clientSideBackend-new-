@@ -16,8 +16,8 @@ public class FeedbackDaoImple implements FeedbackDao{
 	
 	@Override
 	public long save(Feedbacks feedback) {
-		// TODO Auto-generated method stub
-		return 0;
+		sessionFactory.getCurrentSession().save(feedback);
+		return feedback.getFeedback_id();
 	}
 
 	@Override
@@ -28,8 +28,8 @@ public class FeedbackDaoImple implements FeedbackDao{
 
 	@Override
 	public List<Feedbacks> list() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Feedbacks> allFeedbacks=sessionFactory.getCurrentSession().createQuery("from Feedbacks").list();
+		return allFeedbacks;
 	}
 
 	@Override

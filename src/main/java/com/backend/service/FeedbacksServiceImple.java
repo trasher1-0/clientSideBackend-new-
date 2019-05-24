@@ -19,8 +19,7 @@ public class FeedbacksServiceImple  implements FeedbacksService{
 	@Transactional
 	@Override
 	public long save(Feedbacks feedback) {
-		// TODO Auto-generated method stub
-		return 0;
+		return feedbackDao.save(feedback);
 	}
 
 	@Override
@@ -31,8 +30,7 @@ public class FeedbacksServiceImple  implements FeedbacksService{
 
 	@Override
 	public List<Feedbacks> list() {
-		// TODO Auto-generated method stub
-		return null;
+		return feedbackDao.list();
 	}
 
 	@Transactional

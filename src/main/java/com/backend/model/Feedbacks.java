@@ -13,6 +13,7 @@ public class Feedbacks {
 	private Long id;
 	private Long customer_id;  
 	private String feedback ;
+	
 	public Long getFeedback_id() {
 		return id;
 	}
