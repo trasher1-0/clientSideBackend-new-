@@ -16,8 +16,8 @@ public class AuthenticationDaoImple implements AuthenticationDao{
 
 	@Override
 	public long save(Authentication authentication) {
-		// TODO Auto-generated method stub
-		return 0;
+		sessionFactory.getCurrentSession().save(authentication);
+		return authentication.getId();
 	}
 
 	@Override

@@ -19,8 +19,7 @@ public class AuthenticationServiceImple implements AuthenticationService{
 	@Transactional
 	@Override
 	public long save(Authentication authentication) {
-		// TODO Auto-generated method stub
-		return 0;
+		return authenticationDao.save(authentication);
 	}
 
 	@Override
