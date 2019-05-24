@@ -16,8 +16,8 @@ public class HelpDaoImple implements HelpDao {
 	
 	@Override
 	public long save(Help help) {
-		// TODO Auto-generated method stub
-		return 0;
+		sessionFactory.getCurrentSession().save(help);
+		return help.getHelp_id();
 	}
 
 	@Override
@@ -28,8 +28,8 @@ public class HelpDaoImple implements HelpDao {
 
 	@Override
 	public List<Help> list() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Help> allHelpRequests=sessionFactory.getCurrentSession().createQuery("from Help").list();
+		return allHelpRequests;
 	}
 
 	@Override

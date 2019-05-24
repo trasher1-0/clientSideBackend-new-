@@ -19,8 +19,7 @@ public class HelpServiceImple implements HelpService {
 	@Transactional
 	@Override
 	public long save(Help help) {
-		// TODO Auto-generated method stub
-		return 0;
+		return helpDao.save(help);
 	}
 
 	@Override
@@ -31,8 +30,7 @@ public class HelpServiceImple implements HelpService {
 
 	@Override
 	public List<Help> list() {
-		// TODO Auto-generated method stub
-		return null;
+		return helpDao.list();
 	}
 
 	@Transactional
