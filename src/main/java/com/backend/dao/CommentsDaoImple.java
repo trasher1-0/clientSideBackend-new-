@@ -44,4 +44,22 @@ public class CommentsDaoImple implements CommentsDao{
 		
 	}
 
+	@Override
+	public List<Comments> getSmallTrasherComments() {
+		List<Comments> smallTrasherComments=sessionFactory.getCurrentSession().createQuery("from Comments comment where comment.trasher_type=1").list();
+		return smallTrasherComments;
+	}
+
+	@Override
+	public List<Comments> getPrimumTrasherComments() {
+		List<Comments> primumTrasherComments=sessionFactory.getCurrentSession().createQuery("from Comments comment where comment.trasher_type=2").list();
+		return primumTrasherComments;
+	}
+	
+	@Override
+	public List<Comments> getLargeTrasherComments() {
+		List<Comments> largeTrasherComments=sessionFactory.getCurrentSession().createQuery("from Comments comment where comment.trasher_type=3").list();
+		return largeTrasherComments;
+	}
+
 }

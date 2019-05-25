@@ -15,4 +15,10 @@ public interface CommentsService {
 	   void update(long comment_id, Comments comment);
 
 	   void delete(long comment_id);
+
+	List<Comments> getSmallTrasherComments();
+	
+	List<Comments> getPrimumTrasherComments();
+	
+	List<Comments> getLargeTrasherComments();
 }

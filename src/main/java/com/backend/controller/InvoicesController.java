@@ -3,6 +3,8 @@ package com.backend.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,8 +19,10 @@ public class InvoicesController {
 	@Autowired
 	private InvoicesService invoiceService;
 	
-	public ResponseEntity<?> save(Invoices invoice){
-		return null;	
+	@PostMapping("/customer/invoices/send")
+	public ResponseEntity<?> save(@RequestBody Invoices invoice){
+		invoiceService.save(invoice);
+		return ResponseEntity.ok().body("invoice save with invoice id :"+invoice.getInvoice_id());	
 	}
 
 }

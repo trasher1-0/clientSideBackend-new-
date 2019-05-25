@@ -47,4 +47,19 @@ public class CommentsServiceImple implements CommentsService{
 		
 	}
 
+	@Override
+	public List<Comments> getSmallTrasherComments() {
+		return commentDao.getSmallTrasherComments();
+	}
+
+	@Override
+	public List<Comments> getPrimumTrasherComments() {
+		return commentDao.getPrimumTrasherComments();
+	}
+
+	@Override
+	public List<Comments> getLargeTrasherComments() {
+		return commentDao.getLargeTrasherComments();
+	}
+
 }

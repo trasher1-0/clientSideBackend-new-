@@ -34,8 +34,8 @@ public class NotificationsController {
 	
 	
 	/*-- get all unread notifications--*/
-//	@GetMapping("/customer/notifications/unread")
-	
+ 
+	@GetMapping("/customer/notifications/unread")
 	public ResponseEntity<List<Notifications>> getAllTheUnreadNotifications(){
 		List<Notifications> allUnreadNotifications=notificationService.unReadNotificationlist();
 		return ResponseEntity.ok().body(allUnreadNotifications);

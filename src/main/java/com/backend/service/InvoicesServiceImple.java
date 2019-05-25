@@ -19,8 +19,7 @@ public class InvoicesServiceImple implements InvoicesService {
 	@Transactional
 	@Override
 	public long save(Invoices invoice) {
-		// TODO Auto-generated method stub
-		return 0;
+		return invoicesDao.save(invoice);
 	}
 
 	@Override

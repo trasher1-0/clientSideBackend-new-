@@ -17,4 +17,10 @@ public interface CommentsDao {
 
 	   void delete(long comment_id);
 
+	List<Comments> getSmallTrasherComments();
+	
+	List<Comments> getPrimumTrasherComments();
+	
+	List<Comments> getLargeTrasherComments();
+
 }

@@ -24,19 +24,33 @@ public class CommentsController {
 	
 	/*-- send the comment for purticular trasher --*/
 	
-	@PostMapping("/trasher/comments")
+	
+	@PostMapping("/customer/trasher/comments/send")
 	public ResponseEntity<?> save(@RequestBody Comments comment){
 		commentService.save(comment);
 		return ResponseEntity.ok().body("comment id : "+comment.getComment_id());
 		
 	}
 	
-	/*-- getting all the comments of trasher -- */
-	public ResponseEntity<List<Comments>> getAllCommets(){
-		List<Comments> allComments=commentService.list();
-		return ResponseEntity.ok().body(allComments);
-		
+	/*-- getting all the comments of particular trasher -- */
+	
+	@GetMapping("/dashboad/comments/smallTrasher")
+	public ResponseEntity<List<Comments>> getAllCommentsForSmallTrasher(){
+		List<Comments> smallTrasherComments=commentService.getSmallTrasherComments();
+		return ResponseEntity.ok().body(smallTrasherComments);
 	}
 	
+	@GetMapping("/dashboad/comments/primumTrasher")
+	public ResponseEntity<List<Comments>> getAllCommentsForPrimumTrasher(){
+		List<Comments> primumTrasherComments=commentService.getPrimumTrasherComments();
+		return ResponseEntity.ok().body(primumTrasherComments);
+	}
+	
+	
+	@GetMapping("/dashboad/comments/largeTrasher")
+	public ResponseEntity<List<Comments>> getAllCommentsForLargeTrasher(){
+		List<Comments> largeTrasherComments=commentService.getLargeTrasherComments();
+		return ResponseEntity.ok().body(largeTrasherComments);
+	}
 	
 }

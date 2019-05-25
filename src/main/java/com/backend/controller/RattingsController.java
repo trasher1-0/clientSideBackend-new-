@@ -1,7 +1,5 @@
 package com.backend.controller;
 
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +15,6 @@ import com.backend.model.Authentication;
 import com.backend.model.Rattings;
 import com.backend.service.RattingsService;
 
-
-
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
@@ -28,8 +24,9 @@ public class RattingsController {
 	private RattingsService rattingService;
 	private AuthenticationController authentication;
 	private boolean is_rated_for_smallTrasher=false;
-	private boolean is_rated_for_primumTrasher;
-	private boolean is_rated_for_largeTrasher;
+	private boolean is_rated_for_primumTrasher=false;
+	private boolean is_rated_for_largeTrasher=false;
+	
 	
 	@PostMapping("customer/trasher/rattings/send")
 	public ResponseEntity<?> save(@RequestBody Rattings ratting){
@@ -59,7 +56,7 @@ public class RattingsController {
 		return ResponseEntity.ok().body(rattings);
 	}
 	
-	@GetMapping("/dashboad/smallTrasher")
+	@GetMapping("/dashboad/isRated/smallTrasher")
 	public boolean isIs_rated_for_smallTrasher() {
 		return is_rated_for_smallTrasher;
 	}
@@ -69,7 +66,7 @@ public class RattingsController {
 		this.is_rated_for_smallTrasher = is_rated_for_smallTrasher;
 	}
 
-	@GetMapping("/dashboad/primumTrasher")
+	@GetMapping("/dashboad/isRated/primumTrasher")
 	public boolean isIs_rated_for_primumTrasher() {
 		return is_rated_for_primumTrasher;
 	}
@@ -78,7 +75,7 @@ public class RattingsController {
 		this.is_rated_for_primumTrasher = is_rated_for_primumTrasher;
 	}
 
-	@GetMapping("/dashboad/largeTrasher")
+	@GetMapping("/dashboad/isRated/largeTrasher")
 	public boolean isIs_rated_for_largeTrasher() {
 		return is_rated_for_largeTrasher;
 	}
@@ -90,7 +87,7 @@ public class RattingsController {
 	
 	/*-- getting the ratting of small trasher --*/
 	
-	//@GetMapping("customer/smallTrasher/Rattings")
+	@GetMapping("/customer/smallTrasher/Rattings")
 	public float getSmallTrasherRattings(){
 		List<Rattings> smallTrasherRattings=rattingService.getSmallTrasherRattings();
 		int Values=0;
@@ -104,7 +101,7 @@ public class RattingsController {
 	
 	/*-- getting the ratting of primum trasher*/
 	
-	//@GetMapping("customer/primumTrasher/Rattings")
+	@GetMapping("/customer/primumTrasher/Rattings")
 	public float getPrimumTrasherRattings(){
 		List<Rattings> primumTrasherRattings=rattingService.getPrimumTrasherRattings();
 		int Values=0;
@@ -118,7 +115,7 @@ public class RattingsController {
 	
 	/* -- getting ratting of large trasher--*/
 	
-	//@GetMapping("customer/largeTrasher/Rattings")
+	@GetMapping("customer/largeTrasher/Rattings")
 	public float getlargeTrasherRattings(){
 		List<Rattings> largeTrasherRattings=rattingService.getLargeTrasherRattings();
 		int Values=0;

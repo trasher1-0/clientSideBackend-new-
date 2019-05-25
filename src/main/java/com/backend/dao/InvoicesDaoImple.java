@@ -16,8 +16,8 @@ public class InvoicesDaoImple implements InvoicesDao {
 	
 	@Override
 	public long save(Invoices invoice) {
-		// TODO Auto-generated method stub
-		return 0;
+		sessionFactory.getCurrentSession().save(invoice);
+		return invoice.getInvoice_id();
 	}
 
 	@Override
