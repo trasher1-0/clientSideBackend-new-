@@ -16,8 +16,8 @@ public class RattingsDaoImple implements RattingsDao{
 	
 	@Override
 	public long save(Rattings ratting) {
-		// TODO Auto-generated method stub
-		return 0;
+		sessionFactory.getCurrentSession().save(ratting);
+		return ratting.getRatting_id();
 	}
 
 	@Override
@@ -42,6 +42,30 @@ public class RattingsDaoImple implements RattingsDao{
 	public void delete(long ratting_id) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<Rattings> checkRated(Long customer_id) {
+		List<Rattings> ratting=sessionFactory.getCurrentSession().createQuery("from Rattings ratting where ratting.customer_id=2").list();
+		return ratting;
+	}
+
+	@Override
+	public List<Rattings> getSmallTrasherRattings() {
+		List<Rattings> smallTrasherRattings=sessionFactory.getCurrentSession().createQuery("from Rattings ratting where ratting.trasher_type = 1").list();
+		return smallTrasherRattings;
+	}
+
+	@Override
+	public List<Rattings> getPrimumTrasherRattings() {
+		List<Rattings> primumTrasherRattings=sessionFactory.getCurrentSession().createQuery("from Rattings ratting where ratting.trasher_type = 2").list();
+		return primumTrasherRattings;
+	}
+
+	@Override
+	public List<Rattings> getLargeTrasherRattings() {
+		List<Rattings> largeTrasherRattings=sessionFactory.getCurrentSession().createQuery("from Rattings ratting where ratting.trasher_type = 3").list();
+		return largeTrasherRattings;
 	}
 
 }

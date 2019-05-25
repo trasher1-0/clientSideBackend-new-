@@ -17,4 +17,12 @@ public interface RattingsDao {
 
 	   void delete(long ratting_id);
 
+	List<Rattings> checkRated(Long customer_id);
+
+	List<Rattings> getSmallTrasherRattings();
+	
+	List<Rattings> getPrimumTrasherRattings();
+	
+	List<Rattings> getLargeTrasherRattings();
+
 }

@@ -19,8 +19,7 @@ public class RattingsServiceImple implements RattingsService {
 	@Transactional
 	@Override
 	public long save(Rattings ratting) {
-		// TODO Auto-generated method stub
-		return 0;
+		return rattingsDao.save(ratting);
 	}
 
 	@Override
@@ -47,6 +46,26 @@ public class RattingsServiceImple implements RattingsService {
 	public void delete(long ratting_id) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<Rattings> checkRatted(Long customer_id) {
+		return rattingsDao.checkRated(customer_id);
+	}
+
+	@Override
+	public List<Rattings> getSmallTrasherRattings() {
+		return rattingsDao.getSmallTrasherRattings();
+	}
+
+	@Override
+	public List<Rattings> getPrimumTrasherRattings() {
+		return rattingsDao.getPrimumTrasherRattings();
+	}
+
+	@Override
+	public List<Rattings> getLargeTrasherRattings() {
+		return rattingsDao.getLargeTrasherRattings();
 	}
 
 }
