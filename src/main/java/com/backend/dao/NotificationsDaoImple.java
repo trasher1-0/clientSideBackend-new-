@@ -44,4 +44,12 @@ public class NotificationsDaoImple implements NotificationsDao{
 		
 	}
 
+	@Override
+	public List<Notifications> unReadNotificationlist() {
+		List<Notifications> allUnreadNotifications=sessionFactory.getCurrentSession()
+													.createQuery("FROM Notifications notification WHERE notification.is_read = 0 and notification.customer_id=2")
+													.list();
+		return allUnreadNotifications;
+	}
+
 }

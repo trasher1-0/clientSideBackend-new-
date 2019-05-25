@@ -16,4 +16,6 @@ public interface NotificationsService {
 
 	   void delete(long notification_id);
 
+	List<Notifications> unReadNotificationlist();
+
 }

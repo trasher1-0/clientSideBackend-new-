@@ -25,30 +25,19 @@ public class NotificationsController {
 	private List<Notifications> allNotifications;
 	
 	
-	public void getNotifications(){
-		List<Notifications> allNotifications=notificationService.list();
-		if(allNotifications.size() != 0) {
-			for(int i=0;i<allNotifications.size();i++) {
-				if(allNotifications.get(i).getIs_read()==0) {
-					allUnreadNotifications.add(allNotifications.get(i));
-				}
-			}
-		}
-	}
-	
 	/*-- get all the notifications -- */
 	@GetMapping("/customer/allNotifications")
 	public ResponseEntity<List<Notifications>> getAllTheNotications(){
-		getNotifications();
+		List<Notifications> allNotifications=notificationService.list();
 		return ResponseEntity.ok().body(allNotifications);
 	}
 	
 	
 	/*-- get all unread notifications--*/
-	@GetMapping("/customer/notifications/unread")
+//	@GetMapping("/customer/notifications/unread")
 	
 	public ResponseEntity<List<Notifications>> getAllTheUnreadNotifications(){
-		getNotifications();
+		List<Notifications> allUnreadNotifications=notificationService.unReadNotificationlist();
 		return ResponseEntity.ok().body(allUnreadNotifications);
 	}
 	

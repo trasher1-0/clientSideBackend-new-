@@ -17,4 +17,6 @@ public interface NotificationsDao {
 
 	   void delete(long notification_id);
 
+	List<Notifications> unReadNotificationlist();
+
 }

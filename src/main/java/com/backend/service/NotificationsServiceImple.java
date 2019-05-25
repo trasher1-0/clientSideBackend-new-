@@ -47,4 +47,9 @@ public class NotificationsServiceImple implements NotificationsService{
 		
 	}
 
+	@Override
+	public List<Notifications> unReadNotificationlist() {
+		return notificationDao.unReadNotificationlist();
+	}
+
 }
