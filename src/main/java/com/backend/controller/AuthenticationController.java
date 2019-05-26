@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.model.Authentication;
+import com.backend.model.Customer;
 import com.backend.service.AuthenticationService;
+import com.backend.service.CustomerService;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -21,6 +23,9 @@ public class AuthenticationController {
 	
 	@Autowired
 	private AuthenticationService authenticationService;
+	
+	@Autowired
+	private CustomerService customerService;
 	private List<Authentication> allCustomers;
 	private Long customer_id;
 	
@@ -37,6 +42,10 @@ public class AuthenticationController {
 			}
 		}
 		customer_id=authenticationService.save(authentication);
+		Customer customer=new Customer();
+		customer.setId(customer_id);
+		customer.setUser_name(authentication.getUser_name());
+		customerService.save(customer);
 		return ResponseEntity.ok().body("sucessfully registered with id "+ customer_id);
 	}
 	

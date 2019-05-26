@@ -19,8 +19,8 @@ public class CustomerServiceImple implements CustomerService {
 	@Transactional
 	@Override
 	public long save(Customer customer) {
-		// TODO Auto-generated method stub
-		return 0;
+		System.out.println("Check");
+		return customerDao.save(customer);
 	}
 
 	@Override
@@ -31,8 +31,7 @@ public class CustomerServiceImple implements CustomerService {
 
 	@Override
 	public List<Customer> list() {
-		// TODO Auto-generated method stub
-		return null;
+		return customerDao.list();
 	}
 
 	@Transactional

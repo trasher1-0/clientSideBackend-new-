@@ -26,6 +26,10 @@ public class Timeslots {
 		this.time_slot = time_slot;
 	}
 	
+	@Override
+	public String toString() {
+		return "Timeslots [id=" + id + ", time_slot=" + time_slot + "]";
+	}
 	
 	
 }

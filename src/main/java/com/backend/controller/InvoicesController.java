@@ -19,9 +19,10 @@ public class InvoicesController {
 	@Autowired
 	private InvoicesService invoiceService;
 	
-	@PostMapping("/customer/invoices/send")
+	@PostMapping("/customer/invoice/send")
 	public ResponseEntity<?> save(@RequestBody Invoices invoice){
 		invoiceService.save(invoice);
+		System.out.print(invoice.toString());
 		return ResponseEntity.ok().body("invoice save with invoice id :"+invoice.getInvoice_id());	
 	}
 

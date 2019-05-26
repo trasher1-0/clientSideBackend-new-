@@ -19,6 +19,7 @@ public class InvoicesServiceImple implements InvoicesService {
 	@Transactional
 	@Override
 	public long save(Invoices invoice) {
+		System.out.print(true);
 		return invoicesDao.save(invoice);
 	}
 

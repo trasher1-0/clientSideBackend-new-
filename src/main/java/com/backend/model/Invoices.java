@@ -18,6 +18,7 @@ public class Invoices {
 	private String date;
 	private int quantity;
 	
+	
 	public Long getInvoice_id() {
 		return id;
 	}
@@ -59,6 +60,13 @@ public class Invoices {
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+	
+	@Override
+	public String toString() {
+		return "Invoices [id=" + id + ", invoice_type=" + invoice_type + ", customer_id=" + customer_id
+				+ ", customer_name=" + customer_name + ", city=" + city + ", date=" + date + ", quantity=" + quantity
+				+ "]";
 	}
 	
 	

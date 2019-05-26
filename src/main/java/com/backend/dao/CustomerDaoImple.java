@@ -16,8 +16,8 @@ public class CustomerDaoImple implements CustomerDao{
 	
 	@Override
 	public long save(Customer customer) {
-		// TODO Auto-generated method stub
-		return 0;
+		sessionFactory.getCurrentSession().save(customer);
+		return customer.getId();
 	}
 
 	@Override
@@ -28,8 +28,8 @@ public class CustomerDaoImple implements CustomerDao{
 
 	@Override
 	public List<Customer> list() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Customer> customers=sessionFactory.getCurrentSession().createQuery("from Customer").list();
+		return customers;
 	}
 
 	@Override
@@ -43,5 +43,6 @@ public class CustomerDaoImple implements CustomerDao{
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }
