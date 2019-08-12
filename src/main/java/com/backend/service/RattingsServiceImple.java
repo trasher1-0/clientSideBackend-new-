@@ -27,6 +27,21 @@ public class RattingsServiceImple implements RattingsService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public List<Rattings> isRatedForSmallTrasher(long customer_id) {
+		return rattingsDao.isRatedForSmallTrasher(customer_id);
+	}
+	
+	@Override
+	public List<Rattings> isRatedForPrimumTrasher(long customer_id) {
+		return rattingsDao.isRatedForPrimumTrasher(customer_id);
+	}
+	
+	@Override
+	public List<Rattings> isRatedForLargeTrasher(long customer_id) {
+		return rattingsDao.isRatedForLargeTrasher(customer_id);
+	}
 
 	@Override
 	public List<Rattings> list() {

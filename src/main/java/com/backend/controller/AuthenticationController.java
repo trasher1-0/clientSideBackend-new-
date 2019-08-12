@@ -31,14 +31,14 @@ public class AuthenticationController {
 	
 	/*---Signup the customer---*/
 	@PostMapping("/signUp/Authentication")
-	public ResponseEntity<?> save(@RequestBody Authentication authentication){
+	public Authentication save(@RequestBody Authentication authentication){
 		allCustomers=authenticationService.list();
 		for(int i=0 ;i< allCustomers.size();i++) {
 			if(allCustomers.get(i).getEmail().equalsIgnoreCase(authentication.getEmail())) {
-				return ResponseEntity.ok().body("Email there exists !");
+				return (authentication);
 			}
 			if(allCustomers.get(i).getUser_name().equalsIgnoreCase(authentication.getUser_name())) {
-				return ResponseEntity.ok().body("User Name threre exists !");
+				return (authentication);
 			}
 		}
 		customer_id=authenticationService.save(authentication);
@@ -46,24 +46,29 @@ public class AuthenticationController {
 		customer.setId(customer_id);
 		customer.setUser_name(authentication.getUser_name());
 		customerService.save(customer);
-		return ResponseEntity.ok().body("sucessfully registered with id "+ customer_id);
+		return (authentication);
 	}
 	
 	
 	/*-- Log the Customer --*/
 	
-	@GetMapping("/login/Authentication")
-	public ResponseEntity<?> Login(@RequestBody Authentication authentication){
+	@PostMapping("/login/Authentication")
+	public Authentication Login(@RequestBody Authentication authentication){
 		allCustomers=authenticationService.list();
 		for(int i=0 ;i< allCustomers.size();i++) {
+			System.out.println(allCustomers.get(i).getUser_name());
+			System.out.println(authentication.getUser_name());
 			if(allCustomers.get(i).getUser_name().equalsIgnoreCase(authentication.getUser_name())) {
+				System.out.println("entered");
 				if(allCustomers.get(i).getPassword().equals(authentication.getPassword())) {
-					customer_id=allCustomers.get(i).getId();
-					return ResponseEntity.ok().body("sucessfully login with customer id "+customer_id);
+					System.out.println("entered");
+					System.out.println(allCustomers.get(i));
+				//	customer_id=allCustomers.get(i).getId();
+					return (allCustomers.get(i));
 				}
 			}
 		}
-		return ResponseEntity.ok().body("Login fail !");
+		return (authentication);
 		
 	}
 

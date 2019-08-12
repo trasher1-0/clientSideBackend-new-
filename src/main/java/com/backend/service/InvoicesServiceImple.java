@@ -25,10 +25,14 @@ public class InvoicesServiceImple implements InvoicesService {
 
 	@Override
 	public Invoices get(long invoice_id) {
-		// TODO Auto-generated method stub
-		return null;
+		return invoicesDao.get(invoice_id);
 	}
 
+	@Override
+	public List<Invoices> getSelectedCustomerInvoice(long customer_id) {
+		return invoicesDao.getSelectedCustomerInvoice(customer_id);
+	}
+	
 	@Override
 	public List<Invoices> list() {
 		// TODO Auto-generated method stub
@@ -48,5 +52,6 @@ public class InvoicesServiceImple implements InvoicesService {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }

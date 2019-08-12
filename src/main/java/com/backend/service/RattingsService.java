@@ -24,4 +24,10 @@ public interface RattingsService {
 	
 	List<Rattings> getLargeTrasherRattings();
 
+	List<Rattings> isRatedForSmallTrasher(long customer_id);
+
+	List<Rattings> isRatedForPrimumTrasher(long customer_id);
+
+	List<Rattings> isRatedForLargeTrasher(long customer_id);
+
 }

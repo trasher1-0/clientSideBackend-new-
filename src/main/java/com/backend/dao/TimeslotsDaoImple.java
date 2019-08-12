@@ -16,15 +16,24 @@ public class TimeslotsDaoImple implements TimeslotsDao{
 	
 	@Override
 	public long save(Timeslots timeslot) {
-		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().save(timeslot);
 		return 0;
 	}
 
 	@Override
-	public Timeslots get(long invoice_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Timeslots> get(long invoice_id) {
+		List<Timeslots> timeSlots=sessionFactory.getCurrentSession().createQuery("from Timeslots timeSlot where timeSlot.invoice_id=invoice_id").list();
+		return timeSlots;
 	}
+	
+	@Override
+	public List<Timeslots> getTimeSlots(String Date) {
+		System.out.println(Date);
+		//FROM Employee E WHERE E.id = 10
+		List<Timeslots> timeSlots=sessionFactory.getCurrentSession().createQuery("from Timeslots timeSlot where timeSlot.date=Date").list();
+		return timeSlots;
+	}
+
 
 	@Override
 	public List<Timeslots> list() {

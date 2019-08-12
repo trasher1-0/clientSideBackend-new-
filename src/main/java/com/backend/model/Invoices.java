@@ -14,6 +14,7 @@ public class Invoices {
 	private String invoice_type;
 	private Long customer_id;
 	private String customer_name;
+	private String address;
 	private String city;
 	private String date;
 	private int quantity;
@@ -49,6 +50,14 @@ public class Invoices {
 	public void setCity(String city) {
 		this.city = city;
 	}
+	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
 	public String getDate() {
 		return date;
 	}

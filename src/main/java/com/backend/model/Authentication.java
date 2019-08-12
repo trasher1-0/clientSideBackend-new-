@@ -14,8 +14,7 @@ public class Authentication {
 	private String user_name;
 	private String email;
 	private String password;
-	
-	
+	private int is_loged;
 	public Long getId() {
 		return id;
 	}
@@ -40,6 +39,21 @@ public class Authentication {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public int getIs_loged() {
+		return is_loged;
+	}
+	public void setIs_loged(int is_loged) {
+		this.is_loged = is_loged;
+	}
+	@Override
+	public String toString() {
+		return "Authentication [id=" + id + ", user_name=" + user_name + ", email=" + email + ", password=" + password
+				+ ", is_loged=" + is_loged + "]";
+	}
+	
+	
+	
+	
 	
 	
 	

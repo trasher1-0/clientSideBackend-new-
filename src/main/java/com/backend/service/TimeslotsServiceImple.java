@@ -19,14 +19,18 @@ public class TimeslotsServiceImple implements TimeslotsService {
 	@Transactional
 	@Override
 	public long save(Timeslots timeslot) {
-		// TODO Auto-generated method stub
-		return 0;
+		return timeslotsDao.save(timeslot);
 	}
 
 	@Override
-	public Timeslots get(long invoice_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Timeslots> get(long invoice_id) {
+		return timeslotsDao.get(invoice_id);
+	}
+	
+	@Override
+	public List<Timeslots> getTimeSlots(String date) {
+		//System.out.println(date);
+		return timeslotsDao.getTimeSlots(date);
 	}
 
 	@Override
@@ -48,5 +52,7 @@ public class TimeslotsServiceImple implements TimeslotsService {
 		// TODO Auto-generated method stub
 		
 	}
+
+
 
 }

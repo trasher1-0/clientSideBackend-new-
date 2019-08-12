@@ -16,5 +16,7 @@ public interface InvoicesService {
 
 	   void delete(long invoice_id);
 
+	List<Invoices> getSelectedCustomerInvoice(long customer_id);
+
 }
 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,61 +28,65 @@ public class RattingsController {
 	private boolean is_rated_for_primumTrasher=false;
 	private boolean is_rated_for_largeTrasher=false;
 	
+	@GetMapping("/customer/isRatedSmallTrasher/{customer_id}")
+	public boolean isRatedForSmallTrasher(@PathVariable("customer_id") long customer_id) {
+		List<Rattings> ratting=(List<Rattings>) rattingService.isRatedForSmallTrasher((long) customer_id);
+		for(int i=0 ;i<ratting.size();i++) {
+			if(ratting.get(i).getCustomer_id()==customer_id) {
+				return true;
+			}
+		}
+		return false;
+		
+		
+	}
 	
-	@PostMapping("customer/trasher/rattings/send")
-	public ResponseEntity<?> save(@RequestBody Rattings ratting){
-		rattingService.save(ratting);
-		return ResponseEntity.ok().body("ratted Id : " + ratting.getRatting_id());
+	@GetMapping("/customer/isRatedPrimumTrasher/{customer_id}")
+	public boolean isRatedForPrimumTrasher(@PathVariable("customer_id") long customer_id) {
+		List<Rattings> ratting=(List<Rattings>) rattingService.isRatedForPrimumTrasher((long) customer_id);
+		for (int i=0;i<ratting.size();i++) {
+			if(ratting.get(i).getCustomer_id()==customer_id) {
+				return true;
+			}
+		}
+		return false;
+		
+		
+	}
+	
+	@GetMapping("/customer/isRatedLargeTrasher/{customer_id}")
+	public boolean isRatedForLargeTrasher(@PathVariable("customer_id") long customer_id) {
+		List<Rattings> ratting=(List<Rattings>) rattingService.isRatedForLargeTrasher((long) customer_id);
+		for(int i=0;i<ratting.size();i++) {
+			if(ratting.get(i).getCustomer_id()==customer_id) {
+				return true;
+			}
+		}
+		return false;
+		
+		
+	}
+	
+	
+	@PostMapping("/customer/trasher/rattings/send")
+	public Rattings save(@RequestBody Rattings ratting){
+		try {
+			rattingService.save(ratting);
+			return ratting;
+		}
+		catch(Exception e) {
+			return null;
+		}
+		
 		
 	}
 	
 	/*-- check whether purticular customer rated or not*/
 	
-	
-	
-	//@GetMapping("/dashboad")
-	public ResponseEntity<List<Rattings>> is_Rated(Long customer_id) {
-		List<Rattings> rattings=rattingService.checkRatted((long) 1);
-		for(int i=0;i<rattings.size();i++) {
-			if(rattings.get(i).getTrasher_type()==1) {
-				setIs_rated_for_smallTrasher(true);
-			}
-			if(rattings.get(i).getTrasher_type()==2) {
-				setIs_rated_for_primumTrasher(true);
-			}
-			if(rattings.get(i).getTrasher_type()==3) {
-				setIs_rated_for_largeTrasher(true);
-			}
-		}
-		return ResponseEntity.ok().body(rattings);
-	}
-	
-	@GetMapping("/dashboad/isRated/smallTrasher")
-	public boolean isIs_rated_for_smallTrasher() {
-		return is_rated_for_smallTrasher;
-	}
-
-	
-	public void setIs_rated_for_smallTrasher(boolean is_rated_for_smallTrasher) {
-		this.is_rated_for_smallTrasher = is_rated_for_smallTrasher;
-	}
-
-	@GetMapping("/dashboad/isRated/primumTrasher")
-	public boolean isIs_rated_for_primumTrasher() {
-		return is_rated_for_primumTrasher;
-	}
-
-	public void setIs_rated_for_primumTrasher(boolean is_rated_for_primumTrasher) {
-		this.is_rated_for_primumTrasher = is_rated_for_primumTrasher;
-	}
-
-	@GetMapping("/dashboad/isRated/largeTrasher")
-	public boolean isIs_rated_for_largeTrasher() {
-		return is_rated_for_largeTrasher;
-	}
-
-	public void setIs_rated_for_largeTrasher(boolean is_rated_for_largeTrasher) {
-		this.is_rated_for_largeTrasher = is_rated_for_largeTrasher;
+	@GetMapping("/customer/isRated/smallTrasher")
+	public ResponseEntity<List<Rattings>> isRatedForSmallTrasher(){
+		List<Rattings> smallTrasher=rattingService.getSmallTrasherRattings();
+		return ResponseEntity.ok().body(smallTrasher);
 	}
 
 	
@@ -92,11 +97,17 @@ public class RattingsController {
 		List<Rattings> smallTrasherRattings=rattingService.getSmallTrasherRattings();
 		int Values=0;
 		int counter1=0;
-		for(int i=0;i< smallTrasherRattings.size();i++) {
-			Values=(smallTrasherRattings.get(i).getRated_value() + Values);
-			counter1++;
+		try {
+			for(int i=0;i< smallTrasherRattings.size();i++) {
+				Values=(smallTrasherRattings.get(i).getRated_value() + Values);
+				counter1++;
+			}
+			return (Values/counter1);	
 		}
-		return (Values/counter1);	
+		catch(ArithmeticException e){
+			return 0;
+		}
+		
 	}
 	
 	/*-- getting the ratting of primum trasher*/
@@ -106,25 +117,37 @@ public class RattingsController {
 		List<Rattings> primumTrasherRattings=rattingService.getPrimumTrasherRattings();
 		int Values=0;
 		int counter2=0;
-		for(int i=0;i< primumTrasherRattings.size();i++) {
-			Values=(primumTrasherRattings.get(i).getRated_value() + Values);
-			counter2++;
+		try {
+			for(int i=0;i< primumTrasherRattings.size();i++) {
+				Values=(primumTrasherRattings.get(i).getRated_value() + Values);
+				counter2++;
+			}
+			return (Values/counter2);	
+		} 
+		catch(ArithmeticException e) {
+			return 0;
 		}
-		return (Values/counter2);	
+		
 	}
 	
 	/* -- getting ratting of large trasher--*/
 	
-	@GetMapping("customer/largeTrasher/Rattings")
+	@GetMapping("/customer/largeTrasher/Rattings")
 	public float getlargeTrasherRattings(){
 		List<Rattings> largeTrasherRattings=rattingService.getLargeTrasherRattings();
 		int Values=0;
 		int counter3=0;
-		for(int i=0;i< largeTrasherRattings.size();i++) {
-			Values=(largeTrasherRattings.get(i).getRated_value() + Values);
-			counter3++;
+		try {
+			for(int i=0;i< largeTrasherRattings.size();i++) {
+				Values=(largeTrasherRattings.get(i).getRated_value() + Values);
+				counter3++;
+			}
+			return (Values/counter3);	
 		}
-		return (Values/counter3);	
+		catch(ArithmeticException e) {
+			return 0;
+		}	
+			
 	}
 
 	

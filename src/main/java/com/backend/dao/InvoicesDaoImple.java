@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.backend.model.Booking;
 import com.backend.model.Invoices;
 
 @Repository
@@ -22,8 +23,14 @@ public class InvoicesDaoImple implements InvoicesDao {
 
 	@Override
 	public Invoices get(long invoice_id) {
-		// TODO Auto-generated method stub
-		return null;
+		Invoices invoice=sessionFactory.getCurrentSession().get(Invoices.class, invoice_id);
+		return invoice;
+	}
+	
+	@Override
+	public List<Invoices> getSelectedCustomerInvoice(long customer_id) {
+		List<Invoices> allInvoices=sessionFactory.getCurrentSession().createQuery("from Invoices").list();
+		return allInvoices;
 	}
 
 	@Override
@@ -43,5 +50,6 @@ public class InvoicesDaoImple implements InvoicesDao {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }
