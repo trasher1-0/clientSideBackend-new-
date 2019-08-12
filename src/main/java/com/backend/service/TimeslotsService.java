@@ -8,7 +8,7 @@ public interface TimeslotsService {
 
 	long save(Timeslots timeslot);
 
-	Timeslots get(long invoice_id);
+	List<Timeslots> get(long invoice_id);
 
 	   List<Timeslots> list();
 

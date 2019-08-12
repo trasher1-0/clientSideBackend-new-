@@ -69,26 +69,35 @@ public class InvoicesController {
 	@GetMapping("/customer/invoice/selectedTimeSlots/{date}")
 	public List<Integer> getNumOfTimeSLots(@PathVariable("date") String date){
 		//System.out.println(date);
+		
+		// get the all the time slots..
+		
 		List<Timeslots> allTimeSlots=timeSlotsService.getTimeSlots(date);
+		
 		List numOfTimeSlots = new ArrayList();
 		Integer numOfFirstTimeSlots=0;
 		Integer numOfSecondTimeSlots=0;
 		Integer numOfThreedTimeSlots=0;
 		Integer numOfForthTimeSlots=0;
 		
+		
 		for(int i=0;i<allTimeSlots.size();i++) {
 			if((allTimeSlots.get(i).getDate()).equals(date)) {
 				
 				if(allTimeSlots.get(i).getTime_slot().equals("8.00 AM - 9.00 AM")) {
+					System.out.println("first box");
 					numOfFirstTimeSlots++;
 				}
-				if(allTimeSlots.get(i).getTime_slot().equals("10.00 AM - 11.00 AM")) {
+				if(allTimeSlots.get(i).getTime_slot().equals(" 10.00 AM - 11.00 AM")) {
+					System.out.println("scecond box");
 					numOfSecondTimeSlots++;
 				}
-				if(allTimeSlots.get(i).getTime_slot().equals("12.00 PM - 2.00 PM")) {
+				if(allTimeSlots.get(i).getTime_slot().equals(" 12.00 PM - 2.00 PM")) {
+					System.out.println("thired box");
 					numOfThreedTimeSlots++;
 				}
-				if(allTimeSlots.get(i).getTime_slot().equals("3.00 PM - 4.00 PM")) {
+				if(allTimeSlots.get(i).getTime_slot().equals(" 3.00 PM - 4.00 PM")) {
+					System.out.println("forth box");
 					numOfForthTimeSlots++;
 				}
 			}
@@ -98,8 +107,29 @@ public class InvoicesController {
 		numOfTimeSlots.add(2,numOfThreedTimeSlots);
 		numOfTimeSlots.add(3,numOfForthTimeSlots);
 		
+		// reverse the number of time slots array ...
+		
+		for(int i=0;i<numOfTimeSlots.size()/2;i++) {
+			int temp=(int) numOfTimeSlots.get(i);
+			numOfTimeSlots.set(i, numOfTimeSlots.get(numOfTimeSlots.size()-1-i));
+			numOfTimeSlots.set(i, temp);
+		}
+		
 		return numOfTimeSlots;
 	}
+	
+	@GetMapping("/customer/getInvoiceInfo/{invoice_id}")
+	public List<String> getTimeSlots(@PathVariable("invoice_id") long invoice_id){
+		List<Timeslots> timeSlots=(List<Timeslots>) timeSlotsService.get(invoice_id);
+		List timeSlot=new ArrayList();
+		for(int i=0;i<timeSlots.size();i++) {
+			if(timeSlots.get(i).getInvoice_id()==invoice_id) {
+				timeSlot.add(timeSlots.get(i).getTime_slot());
+			}
+		}
+		return timeSlot;
+	}
+	
 	
 	@GetMapping("/customer/get/allInvoices/{customer_id}")
 	public List<Invoices> getSelectedCustomerInvoice(@PathVariable("customer_id") long customer_id) throws NullPointerException{

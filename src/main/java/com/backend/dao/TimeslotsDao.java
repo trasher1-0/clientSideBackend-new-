@@ -9,7 +9,7 @@ public interface TimeslotsDao {
 
 	long save(Timeslots timeslot);
 
-	Timeslots get(long invoice_id);
+	List<Timeslots> get(long invoice_id);
 
 	   List<Timeslots> list();
 

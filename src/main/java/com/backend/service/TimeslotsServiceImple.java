@@ -23,9 +23,8 @@ public class TimeslotsServiceImple implements TimeslotsService {
 	}
 
 	@Override
-	public Timeslots get(long invoice_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Timeslots> get(long invoice_id) {
+		return timeslotsDao.get(invoice_id);
 	}
 	
 	@Override
